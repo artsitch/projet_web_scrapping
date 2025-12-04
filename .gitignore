@@ -1,0 +1,14 @@
+# Environnement virtuel
+.venv/
+venv/
+
+# Fichiers Python compil‚s
+__pycache__/
+*.py[cod]
+
+# Dossier Scrapy local
+.scrapy/
+
+# Autres fichiers temporaires
+*.log
+
