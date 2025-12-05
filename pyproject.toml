@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "comparateur-laptops"
+version = "0.1.0"
+description = "Comparateur de prix de laptops (Scrapy + Docker + MySQL)"
+requires-python = ">=3.10"
+dependencies = [
+    "scrapy",
+]
+

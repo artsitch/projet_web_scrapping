@@ -1,0 +1,13 @@
+pyproject.toml
+comparateur_laptops.egg-info/PKG-INFO
+comparateur_laptops.egg-info/SOURCES.txt
+comparateur_laptops.egg-info/dependency_links.txt
+comparateur_laptops.egg-info/requires.txt
+comparateur_laptops.egg-info/top_level.txt
+comparator_laptops/comparator_laptops/__init__.py
+comparator_laptops/comparator_laptops/items.py
+comparator_laptops/comparator_laptops/middlewares.py
+comparator_laptops/comparator_laptops/pipelines.py
+comparator_laptops/comparator_laptops/settings.py
+comparator_laptops/comparator_laptops/spiders/__init__.py
+comparator_laptops/comparator_laptops/spiders/laptops.py
