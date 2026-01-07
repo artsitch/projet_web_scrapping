@@ -1,11 +1,19 @@
 import scrapy
-from comparator_laptops.items import LaptopsItem
+from ..items import LaptopsItem
+
 
 
 class LaptopsSpider(scrapy.Spider):
-    name = "laptops_static"
+    name = "laptops_ajax"
     allowed_domains = ["webscraper.io"]
-    start_urls = ["https://webscraper.io/test-sites/e-commerce/static/computers/laptops"]
+
+    def start_requests(self):
+        url = "https://webscraper.io/test-sites/e-commerce/ajax/computers/laptops"
+        yield scrapy.Request(
+            url,
+            callback=self.parse,
+            meta={"playwright": True}
+        )
 
     def parse(self, response):
         products = response.xpath('//div[contains(@class,"thumbnail")]')
@@ -36,4 +44,3 @@ class LaptopsSpider(scrapy.Spider):
         if next_page is not None:
             self.logger.info(f"Next page URL: {next_page}")
             yield response.follow(next_page, callback=self.parse)
-

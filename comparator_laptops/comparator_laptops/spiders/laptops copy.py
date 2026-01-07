@@ -15,7 +15,7 @@ class LaptopsSpider(scrapy.Spider):
 
         for prod in products :
             title = prod.xpath('.//a[contains(@class, "title")]/text()').get()
-            price = prod.xpath('.//span[@itemprop="price"]/text()').get()
+            price = prod.xpath('.//h4[contains(@class, "price")]/text()').get()
             product_url = prod.xpath('.//a[contains(@class, "title")]/@href').get()
             image_url = prod.xpath('.//img[contains(@class, "image")]/@src').get()
             # recuperation des infos sur les produits
