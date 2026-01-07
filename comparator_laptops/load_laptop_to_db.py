@@ -1,5 +1,4 @@
 import mysql.connector
-import json
 from merge_laptops import df_allinone, df_static
 
 con = mysql.connector.connect(
@@ -12,8 +11,8 @@ con = mysql.connector.connect(
 
 print("Connexion OK")
 insert_query = """
-INSERT INTO laptops (name, price, product_url, image_url, site)
-VALUES (%s, %s, %s, %s, %s)
+INSERT INTO laptops (name, price, product_url, image_url, site, slug)
+VALUES (%s, %s, %s, %s, %s, %s)
 """
 
 cursor = con.cursor()
@@ -28,6 +27,7 @@ for df in (df_allinone, df_static):
                 row["product_url"],
                 row["image_url"],
                 row["website"],
+                row["slug"],
             ),
         )
 

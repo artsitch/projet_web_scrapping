@@ -1,0 +1,27 @@
+services:
+  db:
+    image: mysql:8
+    environment:
+      - MYSQL_ROOT_PASSWORD=arthur_scrapy
+      - MYSQL_DATABASE=comparator
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+  
+  web:
+    build: .
+    container_name: laptops_flask
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=arthur_scrapy
+      - DB_NAME=comparator
+    command: python app.py
+
+volumes:
+  dbdata:

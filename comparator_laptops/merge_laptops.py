@@ -1,6 +1,16 @@
 # import of the library which permit to process json file
 import json
 import pandas as pd
+import re
+
+def make_slug(s):
+    if not isinstance(s, str):
+        return ""
+    s = s.lower().strip()
+    s = re.sub(r"[^a-z0-9\s-]", "", s)        # enlève caractères spéciaux
+    s = re.sub(r"[\s_-]+", "-", s)            # remplace espaces/underscores par un seul tiret
+    s = re.sub(r"^-+|-+$", "", s)             # enlève tirets au début/fin
+    return s
 
 #load the laptop data from both site all-in-one and static
 with open("laptops_allinone.json", encoding="utf-8") as f:
@@ -33,3 +43,9 @@ df_static["website"] = "static"
 
 print(df_static.head())
 print(df_allinone.head())
+
+for df in (df_allinone, df_static):
+    df["slug"] = df["name"].apply(make_slug)
+
+print(df_static["slug"].head())
+print(df_allinone["slug"].head())
