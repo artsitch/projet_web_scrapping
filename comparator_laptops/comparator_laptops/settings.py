@@ -41,7 +41,7 @@ DOWNLOAD_DELAY = 1
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    "comparator_laptops.middlewares.ComparatorLaptopsSpiderMiddleware": 543,
+#   "comparator_laptops.middlewares.ComparatorLaptopsSpiderMiddleware": 543,
 #}
 
 # Enable or disable downloader middlewares
@@ -84,4 +84,18 @@ DOWNLOAD_DELAY = 1
 #HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
 
 # Set settings whose default value is deprecated to a future-proof value
+DOWNLOADER_MIDDLEWARES = {
+    "scrapy_playwright.middleware.ScrapyPlaywrightDownloaderMiddleware": 543,
+}
+
+PLAYWRIGHT_BROWSER_TYPE = "chromium"
+
+PLAYWRIGHT_LAUNCH_OPTIONS = {
+    "headless": True,
+}
+
+TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
+
+
+
 FEED_EXPORT_ENCODING = "utf-8"
